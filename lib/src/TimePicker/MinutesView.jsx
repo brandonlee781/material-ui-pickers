@@ -10,7 +10,7 @@ export default class MinutesView extends Component {
     date: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     utils: PropTypes.object,
-    steps: Proptypes.number,
+    steps: PropTypes.number,
   }
 
   static defaultProps = {
