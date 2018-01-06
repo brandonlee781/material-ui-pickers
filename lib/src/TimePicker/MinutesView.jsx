@@ -22,7 +22,7 @@ export default class MinutesView extends Component {
   }
 
   render() {
-    const { date, utils } = this.props;
+    const { date, utils, steps } = this.props;
 
     const f = utils.formatNumber;
     const value = date.get('minutes');
@@ -33,18 +33,18 @@ export default class MinutesView extends Component {
         onChange={this.handleChange}
         value={value}
       >
-        <ClockNumber label={f('00')} selected={value === 0} index={12} />
-        <ClockNumber label={f('05')} selected={value === 5} index={1} />
-        <ClockNumber label={f('10')} selected={value === 10} index={2} />
-        <ClockNumber label={f('15')} selected={value === 15} index={3} />
-        <ClockNumber label={f('20')} selected={value === 20} index={4} />
-        <ClockNumber label={f('25')} selected={value === 25} index={5} />
-        <ClockNumber label={f('30')} selected={value === 30} index={6} />
-        <ClockNumber label={f('35')} selected={value === 35} index={7} />
-        <ClockNumber label={f('40')} selected={value === 40} index={8} />
-        <ClockNumber label={f('45')} selected={value === 45} index={9} />
-        <ClockNumber label={f('50')} selected={value === 50} index={10} />
-        <ClockNumber label={f('55')} selected={value === 55} index={11} />
+        {0 % steps === 0 && <ClockNumber label={f('00')} selected={value === 0} index={12} />}
+        {5 % steps === 0 && <ClockNumber label={f('05')} selected={value === 5} index={1} />}
+        {10 % steps === 0 && <ClockNumber label={f('10')} selected={value === 10} index={2} />}
+        {15 % steps === 0 && <ClockNumber label={f('15')} selected={value === 15} index={3} />}
+        {20 % steps === 0 && <ClockNumber label={f('20')} selected={value === 20} index={4} />}
+        {25 % steps === 0 && <ClockNumber label={f('25')} selected={value === 25} index={5} />}
+        {30 % steps === 0 && <ClockNumber label={f('30')} selected={value === 30} index={6} />}
+        {35 % steps === 0 && <ClockNumber label={f('35')} selected={value === 35} index={7} />}
+        {40 % steps === 0 && <ClockNumber label={f('40')} selected={value === 40} index={8} />}
+        {45 % steps === 0 && <ClockNumber label={f('45')} selected={value === 45} index={9} />}
+        {50 % steps === 0 && <ClockNumber label={f('50')} selected={value === 50} index={10} />}
+        {55 % steps === 0 && <ClockNumber label={f('55')} selected={value === 55} index={11} />}
       </Clock>
     );
   }

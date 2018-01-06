@@ -7,6 +7,7 @@ import HourView from './HourView';
 import MinutesView from './MinutesView';
 import { convertToMeridiem } from '../utils/time-utils';
 import * as defaultUtils from '../utils/utils';
+import { roundToStep } from '../utils/time-utils';
 
 export class TimePicker extends Component {
   static propTypes = {
@@ -17,6 +18,7 @@ export class TimePicker extends Component {
     children: PropTypes.node,
     utils: PropTypes.object,
     ampm: PropTypes.bool,
+    steps: PropTypes.number,
   }
 
   static defaultProps = {
@@ -62,8 +64,10 @@ export class TimePicker extends Component {
 
   render() {
     const {
-      classes, theme, date, utils, ampm,
+      classes, theme, utils, ampm, steps,
     } = this.props;
+
+    const date = steps ? roundToStep(this.props.date, steps) : this.props.date;
 
     const { isHourViewShown, meridiemMode } = this.state;
 
@@ -137,6 +141,7 @@ export class TimePicker extends Component {
                 date={date}
                 onChange={this.handleChange(false)}
                 utils={utils}
+                steps={steps}
               />
         }
       </div>
