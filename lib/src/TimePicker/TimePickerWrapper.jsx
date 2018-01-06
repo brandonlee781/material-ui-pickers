@@ -59,7 +59,7 @@ export default class TimePickerWrapper extends PickerBase {
           onChange={this.handleChange}
           utils={utils}
           ampm={ampm}
-          steps={steps || 1}
+          steps={steps}
         />
       </ModalWrapper>
     );
