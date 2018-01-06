@@ -5,9 +5,8 @@ import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
 import HourView from './HourView';
 import MinutesView from './MinutesView';
-import { convertToMeridiem } from '../utils/time-utils';
+import { convertToMeridiem, roundToStep } from '../utils/time-utils';
 import * as defaultUtils from '../utils/utils';
-import { roundToStep } from '../utils/time-utils';
 
 export class TimePicker extends Component {
   static propTypes = {
@@ -25,6 +24,7 @@ export class TimePicker extends Component {
     children: null,
     utils: defaultUtils,
     ampm: true,
+    steps: 1,
   }
 
   state = {
