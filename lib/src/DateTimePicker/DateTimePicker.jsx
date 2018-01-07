@@ -9,7 +9,7 @@ import HourView from '../TimePicker/HourView';
 import MinutesView from '../TimePicker/MinutesView';
 import DateTimePickerTabs from './DateTimePickerTabs';
 import DatetimePickerHeader from './DateTimePickerHeader';
-import { convertToMeridiem } from '../utils/time-utils';
+import { convertToMeridiem, roundToStep } from '../utils/time-utils';
 
 import DomainPropTypes from '../constants/prop-types';
 import * as viewType from '../constants/date-picker-view';
@@ -32,6 +32,14 @@ export class DateTimePicker extends Component {
     renderDay: PropTypes.func,
     utils: PropTypes.object,
     ampm: PropTypes.bool,
+    minutesStep: function(props, propName, componentName) {
+      if (typeof props.minutesStep !== 'number') {
+        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be a number.`);
+      }
+      if (props.minutesStep <= 0 || props.minutesStep >= 60) {
+        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be within the range of 1 to 59.`)
+      }
+    },
   }
 
   static defaultProps = {
@@ -48,6 +56,7 @@ export class DateTimePicker extends Component {
     renderDay: undefined,
     utils: defaultUtils,
     ampm: true,
+    minutesStep: 1,
   }
 
   state = {
@@ -82,7 +91,6 @@ export class DateTimePicker extends Component {
   render() {
     const { openView, meridiemMode } = this.state;
     const {
-      date,
       minDate,
       maxDate,
       showTabs,
@@ -94,7 +102,9 @@ export class DateTimePicker extends Component {
       renderDay,
       utils,
       ampm,
+      minutesStep,
     } = this.props;
+    const date = minutesStep ? roundToStep(this.props.date, minutesStep) : this.props.date;
 
     return (
       <div>

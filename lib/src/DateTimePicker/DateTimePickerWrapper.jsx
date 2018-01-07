@@ -33,6 +33,14 @@ export class DateTimePickerWrapper extends PickerBase {
     labelFunc: PropTypes.func,
     utils: PropTypes.object,
     ampm: PropTypes.bool,
+    minutesStep: function(props, propName, componentName) {
+      if (typeof props.minutesStep !== 'number') {
+        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be a number.`);
+      }
+      if (props.minutesStep <= 0 || props.minutesStep >= 60) {
+        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be within the range of 1 to 59.`)
+      }
+    },
   }
 
   static defaultProps = {
@@ -55,6 +63,7 @@ export class DateTimePickerWrapper extends PickerBase {
     labelFunc: undefined,
     utils: defaultUtils,
     ampm: true,
+    minutesStep: 1
   }
 
   default12hFormat = 'MMMM Do hh:mm a'
@@ -83,6 +92,7 @@ export class DateTimePickerWrapper extends PickerBase {
       labelFunc,
       utils,
       ampm,
+      minutesStep,
       ...other
     } = this.props;
 
@@ -116,6 +126,7 @@ export class DateTimePickerWrapper extends PickerBase {
           renderDay={renderDay}
           utils={utils}
           ampm={ampm}
+          minutesStep={minutesStep}
         />
       </ModalWrapper>
     );
