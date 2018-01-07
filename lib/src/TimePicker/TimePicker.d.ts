@@ -6,6 +6,7 @@ export interface TimePickerProps {
     onChange: (date: object, isFinished?: boolean) => void;
     ampm?: boolean;
     utils?: Utils;
+    steps?: number;
 }
 
 declare const TimePicker: ComponentClass<TimePickerProps>;

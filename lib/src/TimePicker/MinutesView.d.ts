@@ -5,6 +5,7 @@ export interface MinutesViewProps {
     date: object;
     onChange: (date: object, isFinished?: boolean) => void;
     utils?: Utils;
+    steps?: number;
 }
 
 declare const MinutesView: ComponentClass<MinutesViewProps>;

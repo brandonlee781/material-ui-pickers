@@ -20,6 +20,7 @@ export interface DateTimePickerProps {
   timeIcon?: ReactNode;
   renderDay?: RenderDay;
   utils?: Utils;
+  steps?: number;
 }
 
 declare const DateTimePicker: ComponentClass<DateTimePickerProps>;

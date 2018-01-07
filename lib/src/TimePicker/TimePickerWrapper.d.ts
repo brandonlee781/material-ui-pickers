@@ -9,6 +9,7 @@ export interface TimePickerWrapperProps extends ModalWrapperProps {
     returnMoment?: boolean;
     ampm?: boolean;
     utils?: Utils;
+    steps?: number;
 }
 
 declare const TimePickerWrapper: ComponentClass<TimePickerWrapperProps>;
