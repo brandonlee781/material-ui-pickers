@@ -22,7 +22,7 @@ export default class MinutesView extends Component {
   }
 
   render() {
-    const { date, utils, minutesStep } = this.props;
+    const { date, utils } = this.props;
 
     const f = utils.formatNumber;
     const value = date.get('minutes');
