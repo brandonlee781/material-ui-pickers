@@ -17,14 +17,14 @@ export class TimePicker extends Component {
     children: PropTypes.node,
     utils: PropTypes.object,
     ampm: PropTypes.bool,
-    steps: PropTypes.number,
+    minutesStep: PropTypes.number,
   }
 
   static defaultProps = {
     children: null,
     utils: defaultUtils,
     ampm: true,
-    steps: 1,
+    minutesStep: 1,
   }
 
   state = {
@@ -64,10 +64,10 @@ export class TimePicker extends Component {
 
   render() {
     const {
-      classes, theme, utils, ampm, steps,
+      classes, theme, utils, ampm, minutesStep,
     } = this.props;
 
-    const date = steps ? roundToStep(this.props.date, steps) : this.props.date;
+    const date = minutesStep ? roundToStep(this.props.date, minutesStep) : this.props.date;
 
     const { isHourViewShown, meridiemMode } = this.state;
 
@@ -141,7 +141,7 @@ export class TimePicker extends Component {
                 date={date}
                 onChange={this.handleChange(false)}
                 utils={utils}
-                steps={steps}
+                minutesStep={minutesStep}
               />
         }
       </div>

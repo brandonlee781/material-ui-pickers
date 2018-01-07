@@ -22,7 +22,7 @@ export interface DateTimePickerWrapperProps extends ModalWrapperProps {
   timeIcon?: ReactNode;
   renderDay?: RenderDay;
   utils?: Utils;
-  steps?: number;
+  minutesStep?: number;
 }
 
 declare const DateTimePickerWrapper: ComponentClass<DateTimePickerWrapperProps>;
