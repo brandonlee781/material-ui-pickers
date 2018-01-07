@@ -141,7 +141,6 @@ export class TimePicker extends Component {
                 date={date}
                 onChange={this.handleChange(false)}
                 utils={utils}
-                minutesStep={minutesStep}
               />
         }
       </div>
