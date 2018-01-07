@@ -32,14 +32,7 @@ export class DateTimePicker extends Component {
     renderDay: PropTypes.func,
     utils: PropTypes.object,
     ampm: PropTypes.bool,
-    minutesStep: function(props, propName, componentName) {
-      if (typeof props.minutesStep !== 'number') {
-        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be a number.`);
-      }
-      if (props.minutesStep <= 0 || props.minutesStep >= 60) {
-        return new Error(`Invalid prop '${propName}' supplied to '${componentName}', must be within the range of 1 to 59.`)
-      }
-    },
+    minutesStep: PropTypes.number,
   }
 
   static defaultProps = {
