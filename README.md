@@ -110,6 +110,7 @@ returnMoment | boolean | true | Will return moment object in onChange
 invalidLabel | string | 'Unknown' | Displayed string if date cant be parsed (or null)
 labelFunc | func | null | Allow to specify dynamic label for text field `labelFunc(date, invalidLabel)`
 ampm | boolean | true | 12h/24h view for hour selection clock
+minutesStep | number | 1 | How many minutes should be added/subtracted when moving the clock pointer.
 
 #### DateTimepicker
 Prop | Type | Default | Definition
@@ -133,6 +134,7 @@ rightArrowIcon | react node, string | 'keyboard_arrow_right'| Right arrow icon
 dateRangeIcon | react node, string | 'date_range'| Date tab icon 
 timeIcon | react node, string | 'access_time'| Time tab icon
 ampm | boolean | true | 12h/24h view for hour selection clock
+minutesStep | number | 1 | How many minutes should be added/subtracted when moving the clock pointer.
 
 ### l10n
 For l10n texts we're currently relying on moment which is stateful. To change the locale you have to import your langauge specific files an change the locale manually via `moment.locale(language)`.
